@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Intelligent Registration System</title>
+    <link rel="stylesheet" href="./assets/css/styles.css" />
+</head>
+
+<body>
+    <main class="page">
+        <section class="card" aria-labelledby="pageTitle">
+            <header class="header">
+                <div>
+                    <h1 id="pageTitle">Intelligent Registration System</h1>
+                    <p class="sub">Responsive registration form with real-time validation and automation-ready selectors.</p>
+                </div>
+            </header>
+
+            <div id="topAlert" class="alert" role="alert" aria-live="polite" data-testid="topAlert" hidden></div>
+
+            <form id="registrationForm" novalidate>
+                <div class="grid">
+                    <div class="field">
+                        <label for="firstName">First Name <span class="req">*</span></label>
+                        <input id="firstName" name="firstName" type="text" autocomplete="given-name" data-testid="firstName" />
+                        <p class="hint error" id="firstNameError" data-testid="firstNameError"></p>
+                    </div>
+
+                    <div class="field">
+                        <label for="lastName">Last Name <span class="req">*</span></label>
+                        <input id="lastName" name="lastName" type="text" autocomplete="family-name" data-testid="lastName" />
+                        <p class="hint error" id="lastNameError" data-testid="lastNameError"></p>
+                    </div>
+
+                    <div class="field">
+                        <label for="email">Email <span class="req">*</span></label>
+                        <input id="email" name="email" type="email" autocomplete="email" inputmode="email" data-testid="email" />
+                        <p class="hint error" id="emailError" data-testid="emailError"></p>
+                    </div>
+
+                    <div class="field">
+                        <label for="phone">Phone Number <span class="req">*</span></label>
+                        <div class="phoneRow">
+                            <select id="countryCode" name="countryCode" data-testid="countryCode" aria-label="Country code">
+                  <option value="+1" data-minlen="10" data-maxlen="10">+1 (US)</option>
+                  <option value="+91" data-minlen="10" data-maxlen="10" selected>+91 (IN)</option>
+                  <option value="+44" data-minlen="10" data-maxlen="11">+44 (UK)</option>
+                  <option value="+61" data-minlen="9" data-maxlen="9">+61 (AU)</option>
+                </select>
+                            <input id="phone" name="phone" type="tel" autocomplete="tel" inputmode="numeric" placeholder="Digits only" data-testid="phone" />
+                        </div>
+                        <p class="hint error" id="phoneError" data-testid="phoneError"></p>
+                    </div>
+
+                    <div class="field">
+                        <label for="age">Age</label>
+                        <input id="age" name="age" type="number" min="1" max="120" inputmode="numeric" data-testid="age" />
+                        <p class="hint error" id="ageError" data-testid="ageError"></p>
+                    </div>
+
+                    <div class="field">
+                        <label>Gender <span class="req">*</span></label>
+                        <div class="radioRow" role="radiogroup" aria-label="Gender" data-testid="genderGroup">
+                            <label class="radio">
+                  <input type="radio" name="gender" value="Male" data-testid="genderMale" />
+                  <span>Male</span>
+                </label>
+                            <label class="radio">
+                  <input type="radio" name="gender" value="Female" data-testid="genderFemale" />
+                  <span>Female</span>
+                </label>
+                            <label class="radio">
+                  <input type="radio" name="gender" value="Other" data-testid="genderOther" />
+                  <span>Other</span>
+                </label>
+                        </div>
+                        <p class="hint error" id="genderError" data-testid="genderError"></p>
+                    </div>
+
+                    <div class="field full">
+                        <label for="address">Address</label>
+                        <textarea id="address" name="address" rows="3" autocomplete="street-address" data-testid="address"></textarea>
+                        <p class="hint error" id="addressError" data-testid="addressError"></p>
+                    </div>
+
+                    <div class="field">
+                        <label for="country">Country <span class="req">*</span></label>
+                        <select id="country" name="country" data-testid="country"></select>
+                        <p class="hint error" id="countryError" data-testid="countryError"></p>
+                    </div>
+
+                    <div class="field">
+                        <label for="state">State <span class="req">*</span></label>
+                        <select id="state" name="state" data-testid="state"></select>
+                        <p class="hint error" id="stateError" data-testid="stateError"></p>
+                    </div>
+
+                    <div class="field">
+                        <label for="city">City <span class="req">*</span></label>
+                        <select id="city" name="city" data-testid="city"></select>
+                        <p class="hint error" id="cityError" data-testid="cityError"></p>
+                    </div>
+
+                    <div class="field">
+                        <label for="password">Password <span class="req">*</span></label>
+                        <input id="password" name="password" type="password" autocomplete="new-password" data-testid="password" />
+                        <div class="meter" aria-label="Password strength meter">
+                            <div class="bar" id="strengthBar"></div>
+                        </div>
+                        <p class="hint" id="strengthLabel" data-testid="passwordStrength">Strength: —</p>
+                        <p class="hint error" id="passwordError" data-testid="passwordError"></p>
+                    </div>
+
+                    <div class="field">
+                        <label for="confirmPassword">Confirm Password <span class="req">*</span></label>
+                        <input id="confirmPassword" name="confirmPassword" type="password" autocomplete="new-password" data-testid="confirmPassword" />
+                        <p class="hint error" id="confirmPasswordError" data-testid="confirmPasswordError"></p>
+                    </div>
+
+                    <div class="field full">
+                        <label class="check">
+                <input id="terms" name="terms" type="checkbox" data-testid="terms" />
+                <span>I agree to the Terms &amp; Conditions <span class="req">*</span></span>
+              </label>
+                        <p class="hint error" id="termsError" data-testid="termsError"></p>
+                    </div>
+                </div>
+
+                <footer class="actions">
+                    <button type="reset" class="btn secondary" id="resetBtn" data-testid="resetBtn">Reset</button>
+                    <button type="submit" class="btn primary" id="submitBtn" data-testid="submitBtn" disabled>
+              Submit Registration
+            </button>
+                </footer>
+            </form>
+        </section>
+
+        <footer class="foot">
+            <p>
+                Built for testing automation: stable IDs + <code>data-testid</code> selectors.
+            </p>
+        </footer>
+    </main>
+
+    <script src="./assets/js/app.js"></script>
+</body>
+
+</html>
